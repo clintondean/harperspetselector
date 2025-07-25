@@ -1,0 +1,566 @@
+/* Dark and Moody Theme */
+body {
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #2d2d2d 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    overflow-x: hidden;
+}
+
+.main-container {
+    min-height: 100vh;
+    position: relative;
+}
+
+.bg-dark-custom {
+    background: rgba(20, 20, 20, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.glow-text {
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.8),
+                 0 0 20px rgba(255, 193, 7, 0.6),
+                 0 0 30px rgba(255, 193, 7, 0.4);
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+    from {
+        text-shadow: 0 0 10px rgba(255, 193, 7, 0.8),
+                     0 0 20px rgba(255, 193, 7, 0.6),
+                     0 0 30px rgba(255, 193, 7, 0.4);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(255, 193, 7, 1),
+                     0 0 25px rgba(255, 193, 7, 0.8),
+                     0 0 35px rgba(255, 193, 7, 0.6);
+    }
+}
+
+.form-control:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+
+.btn-outline-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-warning {
+    background: linear-gradient(45deg, #ffc107, #ffb300);
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.5);
+    background: linear-gradient(45deg, #ffb300, #ffc107);
+}
+
+/* Response Area Styles */
+.response-hidden {
+    display: none;
+}
+
+.response-visible {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.response-content {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(20, 20, 20, 0.98);
+    border-radius: 15px;
+    border: 2px solid #ffc107;
+    max-width: 80%;
+    box-shadow: 0 0 50px rgba(255, 193, 7, 0.3);
+}
+
+/* Celebration Animation */
+.celebration {
+    animation: celebrate 1s ease-in-out;
+    font-size: 2rem;
+    color: #ffc107;
+    text-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+    position: relative;
+    display: inline-block;
+}
+
+/* Cat Ears for Cat Response */
+.cat-ears {
+    position: relative;
+    padding-top: 40px;
+}
+
+.cat-ears::before,
+.cat-ears::after {
+    content: '';
+    position: absolute;
+    top: -35px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid #ffc107;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.cat-ears::before {
+    left: 25%;
+    transform: rotate(-20deg);
+    animation: earWiggleLeft 2s ease-in-out infinite;
+}
+
+.cat-ears::after {
+    right: 25%;
+    transform: rotate(20deg);
+    animation: earWiggleRight 2s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+@keyframes earWiggleLeft {
+    0%, 100% { transform: rotate(-20deg) scale(1); }
+    50% { transform: rotate(-15deg) scale(1.1); }
+}
+
+@keyframes earWiggleRight {
+    0%, 100% { transform: rotate(20deg) scale(1); }
+    50% { transform: rotate(15deg) scale(1.1); }
+}
+
+/* Fish Underwater Effects */
+.fish-response {
+    position: relative;
+    background: linear-gradient(180deg, 
+        rgba(0, 100, 200, 0.4) 0%, 
+        rgba(0, 150, 255, 0.3) 25%,
+        rgba(0, 200, 255, 0.4) 50%,
+        rgba(0, 150, 255, 0.3) 75%,
+        rgba(0, 100, 200, 0.4) 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    overflow: hidden;
+    border: 2px solid rgba(0, 150, 255, 0.5);
+    box-shadow: 
+        inset 0 0 20px rgba(0, 150, 255, 0.3),
+        0 0 30px rgba(0, 150, 255, 0.2);
+}
+
+.fish-response::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.2) 30%,
+        rgba(255, 255, 255, 0.4) 50%, 
+        rgba(255, 255, 255, 0.2) 70%,
+        transparent 100%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+.fish-response::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: bubbles 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.fish-response .fish-text {
+    position: relative;
+    z-index: 2;
+    animation: underwater-wave 4s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(0, 150, 255, 0.8);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+/* Special styling for "fooshy" and "demure" words */
+.fish-text .fooshy {
+    color: #00d4ff;
+    font-weight: bold;
+    text-shadow: 
+        0 0 15px rgba(0, 212, 255, 0.9),
+        0 0 25px rgba(0, 212, 255, 0.6),
+        0 0 35px rgba(0, 212, 255, 0.4);
+    animation: bubble-float 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+.fish-text .demure {
+    color: #ffc1e8;
+    font-weight: 300;
+    font-style: italic;
+    text-shadow: 
+        0 0 20px rgba(255, 193, 232, 0.9),
+        0 0 30px rgba(255, 193, 232, 0.6),
+        0 0 40px rgba(255, 193, 232, 0.4);
+    animation: elegant-shimmer 4s ease-in-out infinite;
+    display: inline-block;
+    transform-origin: center;
+    letter-spacing: 3px;
+}
+
+.fish-text .very {
+    color: #87ceeb;
+    font-size: 0.9em;
+    text-shadow: 0 0 8px rgba(135, 206, 235, 0.7);
+    animation: gentle-bob 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes bubble-float {
+    0%, 100% { 
+        transform: translateY(0px) scale(1);
+        text-shadow: 
+            0 0 15px rgba(0, 212, 255, 0.9),
+            0 0 25px rgba(0, 212, 255, 0.6),
+            0 0 35px rgba(0, 212, 255, 0.4);
+    }
+    25% { 
+        transform: translateY(-3px) scale(1.05);
+        text-shadow: 
+            0 0 20px rgba(0, 212, 255, 1),
+            0 0 30px rgba(0, 212, 255, 0.8),
+            0 0 40px rgba(0, 212, 255, 0.6);
+    }
+    50% { 
+        transform: translateY(-6px) scale(1.1);
+    }
+    75% { 
+        transform: translateY(-3px) scale(1.05);
+    }
+}
+
+@keyframes elegant-shimmer {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg);
+        text-shadow: 
+            0 0 20px rgba(255, 193, 232, 0.9),
+            0 0 30px rgba(255, 193, 232, 0.6),
+            0 0 40px rgba(255, 193, 232, 0.4);
+        filter: brightness(1);
+    }
+    25% { 
+        transform: scale(1.02) rotate(0.5deg);
+        filter: brightness(1.1);
+    }
+    50% { 
+        transform: scale(1.05) rotate(-0.5deg);
+        text-shadow: 
+            0 0 25px rgba(255, 193, 232, 1),
+            0 0 35px rgba(255, 193, 232, 0.8),
+            0 0 45px rgba(255, 193, 232, 0.6);
+        filter: brightness(1.2);
+    }
+    75% { 
+        transform: scale(1.02) rotate(0.5deg);
+        filter: brightness(1.1);
+    }
+}
+
+@keyframes gentle-bob {
+    0%, 100% { 
+        transform: translateY(0px);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translateY(-2px);
+        opacity: 1;
+    }
+}
+
+/* Dog Bone Rain Effect */
+.dog-bone-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.dog-bone {
+    position: absolute;
+    font-size: 2rem;
+    color: #d2b48c;
+    animation: boneFall linear infinite;
+    text-shadow: 
+        0 0 10px rgba(210, 180, 140, 0.8),
+        0 0 20px rgba(210, 180, 140, 0.6);
+    transform-origin: center;
+}
+
+.dog-bone::before {
+    content: '🦴';
+}
+
+.dog-bone.wobble {
+    animation: boneFallWobble linear infinite;
+}
+
+@keyframes boneFall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes boneFallWobble {
+    0% {
+        transform: translateY(-100px) rotate(0deg) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(25vh) rotate(90deg) scale(1.1);
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) scale(0.9);
+    }
+    75% {
+        transform: translateY(75vh) rotate(270deg) scale(1.1);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Dog Response Styling */
+.dog-response {
+    position: relative;
+    background: linear-gradient(45deg, 
+        rgba(139, 69, 19, 0.3) 0%,
+        rgba(160, 82, 45, 0.4) 25%,
+        rgba(210, 180, 140, 0.3) 50%,
+        rgba(160, 82, 45, 0.4) 75%,
+        rgba(139, 69, 19, 0.3) 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 2px solid rgba(210, 180, 140, 0.6);
+    box-shadow: 
+        inset 0 0 20px rgba(210, 180, 140, 0.3),
+        0 0 30px rgba(210, 180, 140, 0.2);
+}
+
+.dog-response .dog-text {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    color: #8b4513;
+    text-shadow: 
+        0 0 15px rgba(139, 69, 19, 0.8),
+        0 0 25px rgba(139, 69, 19, 0.6);
+    animation: dogBark 1s ease-in-out infinite;
+    letter-spacing: 3px;
+}
+
+@keyframes dogBark {
+    0%, 100% { 
+        transform: scale(1);
+        text-shadow: 
+            0 0 15px rgba(139, 69, 19, 0.8),
+            0 0 25px rgba(139, 69, 19, 0.6);
+    }
+    50% { 
+        transform: scale(1.05);
+        text-shadow: 
+            0 0 20px rgba(139, 69, 19, 1),
+            0 0 30px rgba(139, 69, 19, 0.8),
+            0 0 40px rgba(139, 69, 19, 0.6);
+    }
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes bubbles {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 0.6;
+    }
+}
+
+@keyframes underwater-wave {
+    0%, 100% { 
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        filter: blur(0px);
+    }
+    25% { 
+        transform: translateY(-8px) translateX(3px) rotate(1deg);
+        filter: blur(0.5px);
+    }
+    50% { 
+        transform: translateY(8px) translateX(-3px) rotate(-1deg);
+        filter: blur(1px);
+    }
+    75% { 
+        transform: translateY(-5px) translateX(2px) rotate(0.5deg);
+        filter: blur(0.5px);
+    }
+}
+
+@keyframes celebrate {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1) rotate(-5deg); }
+    50% { transform: scale(1.2); }
+    75% { transform: scale(1.1) rotate(5deg); }
+}
+
+/* Flying Button */
+.flying-button {
+    position: fixed;
+    display: none;
+    z-index: 1001;
+    pointer-events: none;
+}
+
+.flying-button.active {
+    display: block;
+    animation: flyAway 3s ease-out forwards;
+}
+
+@keyframes flyAway {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(200px, -100px) scale(0.8);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(500px, -300px) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* Lizard Queen Overlay */
+.lizard-queen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    animation: flashingColors 0.5s infinite;
+}
+
+.lizard-queen-overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lizard-queen-content {
+    text-align: center;
+    z-index: 2001;
+}
+
+.lizard-queen-text {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 3px 3px 0px #000;
+    animation: textPulse 0.3s infinite alternate;
+}
+
+@keyframes flashingColors {
+    0% { background-color: #ff0000; }
+    20% { background-color: #00ff00; }
+    40% { background-color: #0000ff; }
+    60% { background-color: #ffff00; }
+    80% { background-color: #ff00ff; }
+    100% { background-color: #00ffff; }
+}
+
+@keyframes textPulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .lizard-queen-text {
+        font-size: 2.5rem;
+    }
+    
+    .response-content {
+        padding: 1rem;
+        margin: 1rem;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffc107;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffb300;
+}
