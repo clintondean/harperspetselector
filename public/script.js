@@ -42,15 +42,15 @@ async function tellMeWhatYouThink() {
         case 'cat':
             response = {
                 type: 'celebration',
-                message: `meow ${name} that is the best pet.`,
+                message: `Meow ${name} that is the best pet.`,
                 special: 'celebration'
             };
             break;
         case 'dog':
             response = {
-                type: 'simple',
-                message: 'boof boof',
-                special: 'none'
+                type: 'dog_rain',
+                message: 'Boof! Boof!',
+                special: 'dog_bone_rain'
             };
             break;
         case 'bird':
@@ -93,6 +93,9 @@ async function tellMeWhatYouThink() {
         case 'fullscreen_flash':
             showLizardQueen();
             break;
+        case 'dog_bone_rain':
+            showDogBoneRain(response.message);
+            break;
         default:
             showSimpleResponse(response.message);
     }
@@ -110,6 +113,23 @@ function showCelebration(message) {
     createConfetti();
 }
 
+// Show dog bone rain for dog selection
+function showDogBoneRain(message) {
+    const responseArea = document.getElementById('responseArea');
+    const responseMessage = document.getElementById('responseMessage');
+    
+    responseMessage.innerHTML = `
+        <div class="dog-response">
+            <h2 class="dog-text">${message}</h2>
+            <div style="font-size: 4rem; margin-top: 1rem; animation: dogBark 1.5s ease-in-out infinite;">🐕💫🦴</div>
+        </div>
+    `;
+    responseArea.className = 'response-visible';
+    
+    // Start the dog bone rain
+    createDogBoneRain();
+}
+
 // Show simple response (dog, fish)
 function showSimpleResponse(message) {
     const responseArea = document.getElementById('responseArea');
@@ -117,10 +137,16 @@ function showSimpleResponse(message) {
     
     // Check if this is a fish response
     if (message.toLowerCase().includes('fooshy') || message.toLowerCase().includes('demure')) {
+        // Create stylized version with individual word styling
+        const styledMessage = message
+            .replace(/Very/gi, '<span class="very">Very</span>')
+            .replace(/fooshy/gi, '<span class="fooshy">fooshy</span>')
+            .replace(/demure/gi, '<span class="demure">demure</span>');
+            
         responseMessage.innerHTML = `
             <div class="fish-response">
-                <h2 class="text-warning fish-text">${message}</h2>
-                <div style="font-size: 3rem; margin-top: 1rem;">🌊🐠🌊</div>
+                <h2 class="text-warning fish-text">${styledMessage}</h2>
+                <div style="font-size: 3rem; margin-top: 1rem; animation: gentle-bob 3s ease-in-out infinite;">🌊🐠✨🌊</div>
             </div>
         `;
     } else {
@@ -225,6 +251,12 @@ function resetForm() {
     document.getElementById('flyingButton').className = 'flying-button';
     document.getElementById('lizardQueen').className = 'lizard-queen-overlay';
     
+    // Clean up dog bone rain if it exists
+    const dogBoneRain = document.getElementById('dogBoneRain');
+    if (dogBoneRain && dogBoneRain.parentNode) {
+        dogBoneRain.parentNode.removeChild(dogBoneRain);
+    }
+    
     // Clear pet selection but keep the name
     const selectedPet = document.querySelector('input[name="pet"]:checked');
     if (selectedPet) {
@@ -260,6 +292,69 @@ function createConfetti() {
             confettiContainer.parentNode.removeChild(confettiContainer);
         }
     }, 3000);
+}
+
+// Create dog bone rain effect for dog selection
+function createDogBoneRain() {
+    const boneRainContainer = document.createElement('div');
+    boneRainContainer.className = 'dog-bone-rain';
+    boneRainContainer.id = 'dogBoneRain';
+    
+    document.body.appendChild(boneRainContainer);
+    
+    // Create multiple waves of dog bones
+    let boneCount = 0;
+    const maxBones = 80;
+    
+    const boneInterval = setInterval(() => {
+        if (boneCount >= maxBones) {
+            clearInterval(boneInterval);
+            return;
+        }
+        
+        // Create 2-4 bones at a time
+        const bonesInWave = Math.floor(Math.random() * 3) + 2;
+        for (let i = 0; i < bonesInWave; i++) {
+            setTimeout(() => createDogBone(boneRainContainer), i * 200);
+            boneCount++;
+        }
+    }, 300);
+    
+    // Remove bone rain container after animation
+    setTimeout(() => {
+        if (boneRainContainer.parentNode) {
+            boneRainContainer.parentNode.removeChild(boneRainContainer);
+        }
+    }, 8000);
+}
+
+function createDogBone(container) {
+    const bone = document.createElement('div');
+    bone.className = Math.random() > 0.5 ? 'dog-bone wobble' : 'dog-bone';
+    
+    // Random horizontal position
+    bone.style.left = Math.random() * 100 + '%';
+    
+    // Random animation duration for variety
+    const duration = (Math.random() * 3 + 2) + 's';
+    bone.style.animationDuration = duration;
+    
+    // Random delay for more natural effect
+    const delay = (Math.random() * 1) + 's';
+    bone.style.animationDelay = delay;
+    
+    // Random size variation
+    const scale = 0.8 + Math.random() * 0.6;
+    bone.style.transform = `scale(${scale})`;
+    
+    container.appendChild(bone);
+    
+    // Remove individual bone after animation
+    setTimeout(() => {
+        if (bone.parentNode) {
+            bone.parentNode.removeChild(bone);
+        }
+    }, 6000);
 }
 
 function createConfettiPiece(container, colors) {
