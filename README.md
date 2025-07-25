@@ -8,7 +8,7 @@ A standalone frontend web application featuring a dark and moody pet selection i
 - **Interactive Pet Selection**: Choose from Dog, Cat, Bird, Fish, or Lizard
 - **Unique Responses**: Each pet has a special behavior when selected:
   - 🐱 **Cat**: Celebration animation with confetti, wiggling cat ears, and "meow [name] that is the best pet"
-  - 🐕 **Dog**: Simple "boof boof" response
+  - 🐕 **Dog**: Simple "boof boof" response 
   - 🐦 **Bird**: Button displays "tweet tweet" and flies away from the mouse cursor
   - 🐠 **Fish**: "Very fooshy, very demure" message with underwater wave and shimmer effects
   - 🦎 **Lizard**: Full-screen flashing colors with "I AM THE LIZARD QUEEN"
